@@ -390,5 +390,6 @@ public class SecureSettingsValidators {
         VALIDATORS.put(Secure.NAVIGATION_BAR_HINT, BOOLEAN_VALIDATOR);
         VALIDATORS.put(Secure.GESTURE_NAVBAR_LENGTH_MODE, new InclusiveIntegerRangeValidator(0, 2));
         VALIDATORS.put(Secure.IGNORE_AUTH_CONFIRMATION, BOOLEAN_VALIDATOR);
+        VALIDATORS.put(Secure.POWER_MENU_HIDE_ON_SECURE, BOOLEAN_VALIDATOR);
     }
 }
