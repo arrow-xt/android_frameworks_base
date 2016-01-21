@@ -6075,6 +6075,18 @@ public final class Settings {
          * @hide
          */
         public static final String SMART_5G = "smart_5g";
+        
+        /**
+         * Transparent power menu and dialogs
+         * @hide
+         */
+        public static final String TRANSPARENT_POWER_MENU = "transparent_power_menu";
+
+        /**
+         * Dim amount around power/reboot menu dialogs
+         * @hide
+         */
+        public static final String TRANSPARENT_POWER_DIALOG_DIM = "transparent_power_dialog_dim";
 
         /**
          * These are all public system settings
@@ -6203,6 +6215,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HIGH_TOUCH_POLLING_RATE_ENABLE);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT_AUTOMATIC);
+            PRIVATE_SETTINGS.add(TRANSPARENT_POWER_MENU);
+            PRIVATE_SETTINGS.add(TRANSPARENT_POWER_DIALOG_DIM);
         }
 
         /**
