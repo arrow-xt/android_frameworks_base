@@ -5839,6 +5839,12 @@ public final class Settings {
         public static final String NAV_BAR_COMPACT_LAYOUT = "navigation_bar_compact_layout";
 
         /**
+         * Whether to display cross sign for a data disabled connection
+         * @hide
+         */
+        public static final String DATA_DISABLED_ICON = "data_disabled_icon";
+
+        /**
          * Whether allowing pocket service to register sensors and dispatch informations.
          *   0 = disabled
          *   1 = enabled
