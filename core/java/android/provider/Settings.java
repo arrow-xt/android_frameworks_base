@@ -6102,6 +6102,66 @@ public final class Settings {
         public static final String SMART_5G = "smart_5g";
 
         /**
+        * Ambient Customization
+        * @hide
+        */
+        public static final String AMBIENT_TEXT = "ambient_text";
+
+        /**
+         * Ambient text string
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_STRING = "ambient_text_string";
+
+        /**
+         * Ambient text animation
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_ANIMATION = "ambient_text_animation";
+
+        /**
+         * Ambient text size
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_SIZE = "ambient_text_size";
+
+        /**
+         * Ambient text font
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_FONT = "ambient_text_font";
+
+        /**
+         * Ambient text alignment
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_ALIGNMENT = "ambient_text_alignment";
+
+        /**
+         * Ambient text color
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_COLOR = "ambient_text_color";
+
+        /**
+         * Ambient text type color
+         * @hide
+         */
+        public static final String AMBIENT_TEXT_TYPE_COLOR = "ambient_text_type_color";
+
+        /**
+        * Ambient Customization
+        * @hide
+        */
+        public static final String AMBIENT_IMAGE = "ambient_image";
+
+        /**
+         * Ambient Custom Image
+         * @hide
+         */
+        public static final String AMBIENT_CUSTOM_IMAGE = "ambient_custom_image";
+
+        /**
          * @hide
          */
         public static final String QS_TILE_LABEL_HIDE = "qs_tile_label_hide";
@@ -6253,6 +6313,8 @@ public final class Settings {
             PRIVATE_SETTINGS.add(HIGH_TOUCH_POLLING_RATE_ENABLE);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT);
             PRIVATE_SETTINGS.add(AMBIENT_NOTIFICATION_LIGHT_AUTOMATIC);
+            PRIVATE_SETTINGS.add(AMBIENT_TEXT_COLOR);
+            PRIVATE_SETTINGS.add(AMBIENT_TEXT_TYPE_COLOR);
         }
 
         /**
