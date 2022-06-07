@@ -249,5 +249,6 @@ public class SystemSettingsValidators {
         VALIDATORS.put(System.STATUS_BAR_QUICK_QS_PULLDOWN, new InclusiveIntegerRangeValidator(0, 2));
         VALIDATORS.put(System.QS_TILE_LABEL_SIZE, ANY_INTEGER_VALIDATOR);
         VALIDATORS.put(System.QS_TILE_SECONDARY_LABEL_SIZE, ANY_INTEGER_VALIDATOR);
+        VALIDATORS.put(System.NAVIGATION_BAR_IME_SPACE, ANY_INTEGER_VALIDATOR);
     }
 }
