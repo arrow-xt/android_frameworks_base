@@ -6191,6 +6191,11 @@ public final class Settings {
          * @hide
          */
         public static final String QS_UI_STYLE = "qs_ui_style";
+        
+        /**
+	       * @hide
+	       */
+        public static final String QS_TILE_LABEL_SIZE = "qs_tile_label_size";
 
         /**
          * These are all public system settings
