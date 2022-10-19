@@ -6131,7 +6131,13 @@ public final class Settings {
           * @hide
           */
         public static final String QS_HEADER_SIZE = "qs_header_size";
-        
+
+        /**
+         * Enable and Disable Dual Tone Colors QsPanel
+         * @hide
+         */
+        public static final String QS_DUAL_TONE = "qs_dual_tone";
+
         /**
          * These are all public system settings
          *
