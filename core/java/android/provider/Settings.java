@@ -11842,6 +11842,12 @@ public final class Settings {
          */
         public static final String LOCK_SCREEN_WEATHER_ENABLED = "lockscreen_weather_enabled";
 
+	      /**
+         * Quicksettings tile shape
+         * @hide
+         */
+        public static final String QS_TILE_SHAPE = "qs_tile_shape";
+
         /**
          * Whether to show daily data usage in the QS footer.
          * @hide
