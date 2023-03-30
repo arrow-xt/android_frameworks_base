@@ -83,7 +83,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Callbacks,
-        StatusBarStateController.StateListener, Dumpable, TunerService.Tunable  {
+        StatusBarStateController.StateListener, Dumpable, TunerService.Tunable {
     private static final String TAG = "QS";
     private static final boolean DEBUG = false;
     private static final String EXTRA_EXPANDED = "expanded";
@@ -92,6 +92,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
 
     private static final String QS_UI_STYLE =
             "system:" + Settings.System.QS_UI_STYLE;
+    private static final String QS_TRANSPARENCY =
+            "system:" + Settings.System.QS_TRANSPARENCY;
 
     private final Rect mQsBounds = new Rect();
     private final SysuiStatusBarStateController mStatusBarStateController;
@@ -175,6 +177,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
     
     private final TunerService mTunerService;
 
+    private float mCustomAlpha = 1f;
+
     @Inject
     public QSFragment(RemoteInputQuickSettingsDisabler remoteInputQsDisabler,
             SysuiStatusBarStateController statusBarStateController, CommandQueue commandQueue,
@@ -203,8 +207,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
         mDumpManager = dumpManager;
         mFooterActionsController = footerActionsController;
         mFooterActionsViewModelFactory = footerActionsViewModelFactory;
-        mListeningAndVisibilityLifecycleOwner = new ListeningAndVisibilityLifecycleOwner();
         mTunerService = tunerService;
+        mListeningAndVisibilityLifecycleOwner = new ListeningAndVisibilityLifecycleOwner();
     }
 
     @Override
@@ -299,6 +303,7 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
                 });
 
         mTunerService.addTunable(this, QS_UI_STYLE);
+        mTunerService.addTunable(this, QS_TRANSPARENCY);
     }
 
     private void bindFooterActionsView(View root) {
@@ -435,6 +440,9 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
         switch (key) {
             case QS_UI_STYLE:
                 isA11Style = TunerService.parseInteger(newValue, 0) == 1;
+            case QS_TRANSPARENCY:
+                mCustomAlpha =
+                        TunerService.parseInteger(newValue, 100) / 100f;
                 break;
             default:
                 break;
@@ -695,7 +703,7 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
         float footerActionsExpansion =
                 onKeyguardAndExpanded ? 1 : mInSplitShade ? alphaProgress : expansion;
         mQSFooterActionsViewModel.onQuickSettingsExpansionChanged(footerActionsExpansion,
-                mInSplitShade);
+                mInSplitShade, mCustomAlpha);
         mQSPanelController.setRevealExpansion(expansion);
         mQSPanelController.getTileLayout().setExpansion(expansion, proposedTranslation);
         mQuickQSPanelController.getTileLayout().setExpansion(expansion, proposedTranslation);
