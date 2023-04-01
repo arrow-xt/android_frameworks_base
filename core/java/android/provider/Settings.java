@@ -6091,6 +6091,11 @@ public final class Settings {
         public static final String CUSTOM_NOTIFICATION_VIBRATION_PATTERN = "custom_notification_vibration_pattern";
 
         /**
+         * @hide
+         */
+        public static final String QS_PANEL_STYLE = "qs_panel_style";
+
+        /**
          * Whether to enable smart 5G mode
          * @hide
          */
