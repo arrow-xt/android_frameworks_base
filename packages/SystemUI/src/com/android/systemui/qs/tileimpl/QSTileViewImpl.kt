@@ -49,6 +49,7 @@ import android.widget.TextView
 import androidx.annotation.VisibleForTesting
 import android.annotation.SuppressLint;
 import com.android.settingslib.Utils
+import com.android.systemui.FontSizeUtils
 import com.android.systemui.R
 import com.android.systemui.animation.Interpolators
 import com.android.systemui.animation.LaunchableView
@@ -292,8 +293,8 @@ open class QSTileViewImpl @JvmOverloads constructor(
     }
 
     fun updateResources() {
-        label.setTextSize(TypedValue.COMPLEX_UNIT_SP, labelSize)
-        secondaryLabel.setTextSize(TypedValue.COMPLEX_UNIT_SP, labelSize)
+        FontSizeUtils.updateFontSize(label, R.dimen.qs_tile_text_size)
+        FontSizeUtils.updateFontSize(secondaryLabel, R.dimen.qs_tile_secondary_label_text_size)
 
 	if (isA11Style) {
 	    updateA11StyleResources()
