@@ -93,6 +93,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
 
     private static final String QS_TRANSPARENCY =
             "system:" + Settings.System.QS_TRANSPARENCY;
+    private static final String QS_UI_STYLE =
+            "system:" + Settings.System.QS_UI_STYLE;
 
     private final Rect mQsBounds = new Rect();
     private final SysuiStatusBarStateController mStatusBarStateController;
@@ -115,6 +117,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
     private float mSquishinessFraction = 1;
     private boolean mQsDisabled;
     private int[] mLocationTemp = new int[2];
+    private int mQSPanelScrollY = 0;
+    private boolean isA11Style;
 
     private final RemoteInputQuickSettingsDisabler mRemoteInputQuickSettingsDisabler;
     private final MediaHost mQsMediaHost;
@@ -175,6 +179,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
 
     private float mCustomAlpha = 1f;
 
+    private final TunerService mTunerService;
+
     @Inject
     public QSFragment(RemoteInputQuickSettingsDisabler remoteInputQsDisabler,
             SysuiStatusBarStateController statusBarStateController, CommandQueue commandQueue,
@@ -188,7 +194,8 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
             FooterActionsViewModel.Factory footerActionsViewModelFactory,
             FooterActionsViewBinder footerActionsViewBinder,
             LargeScreenShadeInterpolator largeScreenShadeInterpolator,
-            FeatureFlags featureFlags) {
+            FeatureFlags featureFlags,
+            TunerService tunerService) {
         mRemoteInputQuickSettingsDisabler = remoteInputQsDisabler;
         mQsMediaHost = qsMediaHost;
         mQqsMediaHost = qqsMediaHost;
@@ -205,6 +212,7 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
         mFooterActionsViewModelFactory = footerActionsViewModelFactory;
         mFooterActionsViewBinder = footerActionsViewBinder;
         mListeningAndVisibilityLifecycleOwner = new ListeningAndVisibilityLifecycleOwner();
+        mTunerService = tunerService;
     }
 
     @Override
@@ -242,6 +250,9 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
         mQSPanelScrollView.setOnScrollChangeListener(
                 (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
                     // Lazily update animators whenever the scrolling changes
+                    if (isA11Style) {
+                        mQSPanelScrollY = scrollY;
+                    }
                     mQSAnimator.requestAnimatorUpdate();
                     if (mScrollListener != null) {
                         mScrollListener.onQsPanelScrollChanged(scrollY);
@@ -291,6 +302,7 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
                 });
 
         Dependency.get(TunerService.class).addTunable(this, QS_TRANSPARENCY);
+        mTunerService.addTunable(this, QS_UI_STYLE);
     }
 
     private void bindFooterActionsView(View root) {
@@ -431,6 +443,9 @@ public class QSFragment extends LifecycleFragment implements QS, CommandQueue.Ca
             case QS_TRANSPARENCY:
                 mCustomAlpha =
                         TunerService.parseInteger(newValue, 100) / 100f;
+                break;
+            case QS_UI_STYLE:
+                isA11Style = TunerService.parseInteger(newValue, 0) == 1;
                 break;
             default:
                 break;
