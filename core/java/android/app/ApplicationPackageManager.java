@@ -819,6 +819,14 @@ public class ApplicationPackageManager extends PackageManager {
                 }
             };
 
+    private static final String[] pTensorCodenames = {
+            "cheetah",
+            "panther",
+            "bluejay",
+            "oriole",
+            "raven"
+    };
+
     private static final String[] featuresPixel = {
             "com.google.android.apps.photos.PIXEL_2019_PRELOAD",
             "com.google.android.apps.photos.PIXEL_2019_MIDYEAR_PRELOAD",
@@ -857,10 +865,18 @@ public class ApplicationPackageManager extends PackageManager {
         if (packageName != null &&
                 packageName.equals("com.google.android.apps.photos")) {
             if (Arrays.asList(featuresPixel).contains(name)) return false;
+            if (Arrays.asList(featuresTensor).contains(name)) return false;
             if (Arrays.asList(featuresNexus).contains(name)) return true;
         }
         if (Arrays.asList(featuresPixel).contains(name)) return true;
-
+        if (Arrays.asList(featuresTensor).contains(name) &&
+                !Arrays.asList(pTensorCodenames).contains(SystemProperties.get("ro.product.device"))) {
+            return false;
+        } else if (packageName != null && Arrays.asList(featuresTensor).contains(name)) {
+            if (packageName.contains("com.google.android.as") || packageName.contains("com.google.android.apps.nexuslauncher")) {
+                return false;
+            }
+        }
         return mHasSystemFeatureCache.query(new HasSystemFeatureQuery(name, version));
     }
 
