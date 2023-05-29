@@ -44,7 +44,7 @@ public class SystemSettings {
         Settings.System.DIM_SCREEN,
         Settings.System.SCREEN_OFF_TIMEOUT,
         Settings.System.SCREEN_BRIGHTNESS_MODE,
-9        Settings.System.ADAPTIVE_SLEEP,             // moved to secure
+        Settings.System.ADAPTIVE_SLEEP,             // moved to secure
         Settings.System.APPLY_RAMPING_RINGER,
         Settings.System.VIBRATE_INPUT_DEVICES,
         Settings.System.MODE_RINGER_STREAMS_AFFECTED,
@@ -104,6 +104,7 @@ public class SystemSettings {
         Settings.System.QS_TILE_VERTICAL_LAYOUT,
         Settings.System.QS_LAYOUT,
         Settings.System.QS_TILE_LABEL_SIZE,
+        Settings.System.QS_TILE_SECONDARY_LABEL_SIZE,
         Settings.System.QQS_LAYOUT,
         Settings.System.QS_PANEL_STYLE
     };
