@@ -99,5 +99,6 @@ public class SystemSettings {
         Settings.System.NOTIFICATION_VIBRATION_PATTERN,
         Settings.System.CUSTOM_NOTIFICATION_VIBRATION_PATTERN,
         Settings.System.LOCKSCREEN_BATTERY_INFO,
+        Settings.System.HAPTIC_ON_SLIDER,
     };
 }
