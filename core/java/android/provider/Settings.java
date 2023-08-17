@@ -6200,7 +6200,14 @@ public final class Settings {
         /**
          * @hide
          */
+         
         public static final String QS_TILE_SECONDARY_LABEL_SIZE = "qs_tile_secondary_label_size";
+        
+        /**
+         * QS Header
+         * @hide
+         */
+        public static final String QS_HEADER_IMAGE = "qs_header_image";
 
         /**
          * These are all public system settings
