@@ -58,6 +58,10 @@
 
     <!-- Horizon Light -->
     <java-symbol type="integer" name="config_AmbientPulseLightColor" />
+    
+    <!-- SystemUI restart dialog -->
+    <java-symbol type="string" name="systemui_restart_title" />
+    <java-symbol type="string" name="systemui_restart_message" />
 
     <!-- Location indicator -->
     <java-symbol type="drawable" name="stat_sys_location" />
