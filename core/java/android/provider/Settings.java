@@ -5850,12 +5850,6 @@ public final class Settings {
         public static final String TORCH_POWER_BUTTON_GESTURE = "torch_power_button_gesture";
 
         /**
-         * Whether to show advanced reboot options in power menu
-         * @hide
-         */
-        public static final String ADVANCED_REBOOT = "advanced_reboot";
-
-        /**
          * Whether to play the camera shutter sound on taking a screenshot.
          * @hide
          */
