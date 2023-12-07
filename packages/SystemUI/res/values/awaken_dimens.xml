@@ -19,4 +19,8 @@
     <!-- Additional gesture navbar lengths -->
     <dimen name="navigation_home_handle_width_medium">130dp</dimen>
     <dimen name="navigation_home_handle_width_long">160dp</dimen>
+
+    <!-- Height of the faceunlock image view -->
+    <dimen name="keyguard_face_unlock_margin_bottom">@dimen/keyguard_lock_height</dimen>
+
 </resources>
